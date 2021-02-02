@@ -1,0 +1,10 @@
+<!-- swatch -->
+{% if product.available and product.variants.size > 1 %}
+{% for option in product.options %}
+{% include 'swatch' with option %}
+{% endfor %}
+{% endif %}
+<!-- end swatch -->
+
+
+<paste code above addto cart button>
