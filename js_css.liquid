@@ -179,4 +179,37 @@ jQuery('.swatch :radio').change(function() {
       .val(optionValue)
       .trigger('change');
   });
+
+jQuery('.product_variant_swatch .swatch input').change(function() {
+    var optionIndex = jQuery(this).closest('.swatch').attr('data-option-index');
+    var optionValue = jQuery(this).val();
+
+    jQuery(this)
+      .closest('form')
+      .find('.single-option-selector')
+      .eq(optionIndex)
+      .val(optionValue)
+      .trigger('change');
+var size=jQuery(this).parents('form').find('select#SingleOptionSelector-0').val();
+var color=jQuery(this).parents('form').find('select#SingleOptionSelector-1').val();
+console.log(color+'---'+size);
+$(this).parents('.product_variant_swatch form').find('select.custom_product_select option').removeAttr("selected","selected");
+  if(color !== undefined){
+console.log('both');
+$(this).parents('.product_variant_swatch form').find('select.custom_product_select [data-valuee="'+size+'"][data-value="'+color+'"]').trigger('change').attr("selected","selected");
+}
+  else{
+console.log('one');
+$(this).parents('.product_variant_swatch form').find('select.custom_product_select [data-valuee="'+size+'"]').trigger('change').attr("selected","selected");
+$(this).parents('.product_variant_swatch form').find('select.custom_product_select [data-value="'+color+'"]').trigger('change').attr("selected","selected");  
+  }
+
+var price= $(this).parents('.product_variant_swatch form').find('select.custom_product_select [selected="selected"]').attr('data-price');
+console.log(price);
+//$(this).parents('.custom_product_with_swatch').find('span.h1.medium--left small').html(price);
+
+  
+});
+
+
 </script>
